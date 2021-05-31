@@ -2,6 +2,7 @@ const express = require("express")
 const http = require("http")
 const app = express()
 const server = http.createServer(app)
+const cors = require("cors")
 
 const Socket = require("socket.io")
 
@@ -9,6 +10,8 @@ const firebase = require("./db")
 const firestore = firebase.firestore()
 
 const io = new Socket.Server(server)
+
+app.use(cors())
 
 let users = []
 
